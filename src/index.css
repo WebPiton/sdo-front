@@ -1,0 +1,21 @@
+* {
+  text-decoration: none;
+  outline: none;
+  list-style: none;
+  user-select: none;
+}
+
+html{
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}

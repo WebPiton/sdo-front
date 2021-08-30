@@ -1,0 +1,43 @@
+.Auth {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+.Auth form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+
+.Auth form input {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 18px;
+    border: 2px solid #000;
+    border-radius: 25px;
+}
+
+.Auth form input::placeholder {
+    color: #000;
+    font-size: 18px;
+}
+
+.Auth form button {
+    height: 35px;
+    width: 70%;
+    margin: auto;
+    border: 0;
+    border-radius: 20px;
+    font-size: 23px;
+    background: #1DACD6;
+    color: #fff;
+}
+
+.Auth form .error {
+    color: red;
+    width: max-content;
+    margin: auto;
+    margin-bottom: 10px;
+}

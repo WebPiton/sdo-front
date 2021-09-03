@@ -1,31 +1,82 @@
+import { Redirect } from "react-router-dom";
 import axios from "../../axios/axios";
-import { AUTH_SUCCESS, AUTH_LOGOUT, AUTH_ERROR } from "./actionTypes";
+import {
+  AUTH_SUCCESS,
+  AUTH_LOGOUT,
+  AUTH_ERROR,
+} from "./actionTypes";
 
 export function auth(email, password) {
-  const dataReqest = new FormData();
-  dataReqest.append("email", email);
-  dataReqest.append("pwd", password);
-
   return async (dispatch) => {
-    const respons = await axios.post(
-      "createAuth", dataReqest
+    const respons = await axios.get(
+      "users/auth?email=" + email + "&pwd=" + password
     );
-
     const data = respons.data;
-    // console.log(data);
-    if (data.type == 'success') {
-      localStorage.setItem("token", data.token);
-      console.log(data.token == localStorage.getItem("token"));
-      dispatch(authSuccess(data.token));
-      window.location.href = '/'
+    switch (data.code) {
+      case 401:
+        return dispatch(authError(data.code, data.description));
+      case 402:
+        return dispatch(authError(data.code, data.description));
+      case 200:
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("dateLast", data.dateLast);
+        localStorage.setItem("role", data.role);
+        dispatch(authSuccess(data.token, data.role));
+        break;
+      default:
+        return dispatch(authError(0, "Что-то пошло не так"));
     }
+  };
+}
 
+function validateEmail(email) {
+  var pattern =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return pattern.test(email);
+}
 
+export function reg(email, password, repitPassword) {
+  return async (dispatch) => {
+    if (!validateEmail(email)) {
+      return dispatch(authError(405, "Почта указанна не верно"));
+    }
+    if (password.trim().length <= 5) {
+      return dispatch(authError(406, "Пароль меньше 6 символов"));
+    }
+    if (password !== repitPassword) {
+      return dispatch(authError(407, "Пароли не совпадает"));
+    }
+    const respons = await axios.get(
+      "users/reg?email=" + email + "&pwd=" + password
+    );
+    const data = respons.data;
+    switch (data.code) {
+      case 403:
+        return dispatch(authError(data.code, data.description));
+      case 200:
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("dateLast", data.dateLast);
+        localStorage.setItem("role", data.role);
+        dispatch(authSuccess(data.token, data.role));
+        break;
+      default:
+        return dispatch(authError(0, "Что-то пошло не так"));
+    }
+  };
+}
+
+export function authLogout(time) {
+  return (dispatch) => {
+    setTimeout(() => {
+      dispatch(logout());
+    }, time * 1000);
   };
 }
 
 export function logout() {
   localStorage.removeItem("token");
+  localStorage.removeItem("dateLast");
+  localStorage.removeItem("role");
   return {
     type: AUTH_LOGOUT,
   };
@@ -34,24 +85,35 @@ export function logout() {
 export function autoLogin() {
   return (dispatch) => {
     const token = localStorage.getItem("token");
+    const role = localStorage.getItem("role");
     if (!token) {
       dispatch(logout());
     } else {
-      dispatch(authSuccess(token));
+      const dateLast = new Date(localStorage.getItem("dateLast"));
+      if (dateLast <= new Date().toString()) {
+        dispatch(logout());
+      } else {
+        dispatch(authSuccess(token, role));
+        dispatch(
+          authLogout((dateLast.getTime() - new Date().getTime()) / 1000)
+        );
+      }
     }
   };
 }
 
-export function authSuccess(token) {
+export function authSuccess(token, role) {
   return {
     type: AUTH_SUCCESS,
-    token
+    token,
+    role,
   };
 }
 
-export function authError(error) {
+export function authError(code, description) {
   return {
     type: AUTH_ERROR,
-    error,
+    code,
+    description,
   };
 }

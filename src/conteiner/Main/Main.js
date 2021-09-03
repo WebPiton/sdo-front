@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import "./Home.css"
+import "./Main.css"
 
-class Home extends Component {
+class Main extends Component {
   componentDidMount() {
     document.title = "Главная";
   }
@@ -9,10 +9,10 @@ class Home extends Component {
   render() {
     return (
       <React.Fragment>
-        <p>asda</p>
+        <p>Hello world!</p>
       </React.Fragment>
     );
   }
 }
 
-export default Home;
+export default Main;

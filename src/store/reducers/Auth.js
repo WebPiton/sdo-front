@@ -2,7 +2,9 @@ import { AUTH_ERROR, AUTH_LOGOUT, AUTH_SUCCESS } from "../actions/actionTypes";
 
 const initialState = {
   token: null,
-  error: null,
+  description: null,
+  code: null,
+  role: null,
 };
 
 export default function authReducer(state = initialState, action) {
@@ -11,6 +13,7 @@ export default function authReducer(state = initialState, action) {
       return {
         ...state,
         token: action.token,
+        role: action.role,
       };
     case AUTH_LOGOUT:
       return {
@@ -20,7 +23,8 @@ export default function authReducer(state = initialState, action) {
     case AUTH_ERROR:
       return {
         ...state,
-        error: action.error,
+        description: action.description,
+        code: action.code,
       };
     default:
       return state;

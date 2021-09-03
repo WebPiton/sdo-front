@@ -39,6 +39,13 @@
     font-size: 17px;
 }
 
+.error {
+    margin: 0 auto 10px;
+    font-size: 18px;
+    font-weight:540;
+    color: red;
+}
+
 @media(max-width: 1024px){
     .regForm{
         width: 90%;

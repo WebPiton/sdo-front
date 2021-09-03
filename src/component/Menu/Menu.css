@@ -1,0 +1,54 @@
+.Menu {
+    position: fixed;
+    background: #363636;
+    width: 70px;
+    height: 100%;
+}
+
+/* .Menu:hover {
+    width: 300px;
+} */
+
+.Menu nav {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+}
+
+.Menu nav ul {
+    padding-left: 10px;
+    margin: 0;
+    display: flex;
+}
+
+.Menu nav ul p {
+    display: none;
+}
+
+.Menu nav ul:hover p {
+    display: block;
+    margin: auto;
+}
+
+.Menu nav ul:hover {
+    width: 200px;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    margin-left: 10px;
+    background: #fff;
+    text-align: center;
+    color: #fff;
+    background: #363636;
+
+}
+
+.Menu nav ul a {
+    color: #000;
+    max-width: max-content;
+}
+
+.Menu nav ul a img {
+    width: 50px;
+    padding: 5px 5px 5px 0;
+}

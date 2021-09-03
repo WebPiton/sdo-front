@@ -1,0 +1,11 @@
+.notfound {
+    margin: auto;
+}
+
+.notfound p {
+    font-size: 30px;
+    font-weight: 900;
+    width: max-content;
+    margin: auto;
+    color: #d4d4d4;
+}

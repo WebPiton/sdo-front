@@ -3,10 +3,17 @@ import {
   AUTH_SUCCESS,
   AUTH_LOGOUT,
   AUTH_ERROR,
+  AUTH_PAGE
 } from "./actionTypes";
 
 export function auth(email, password) {
   return async (dispatch) => {
+    if (!validateEmail(email)) {
+      return dispatch(authError(405, "Почта указанна не верно"));
+    }
+    if (password.trim().length <= 5) {
+      return dispatch(authError(406, "Пароль меньше 6 символов"));
+    }
     const respons = await axios.get(
       "users/auth?email=" + email + "&pwd=" + password
     );
@@ -115,4 +122,29 @@ export function authError(code, description) {
     code,
     description,
   };
+}
+
+export function studentPage(page) {
+  return (dispatch) => {
+    localStorage.setItem("page", page);
+    dispatch(pageSuccess(page))
+  }
+}
+
+export function autoPage() {
+  return (dispatch) => {
+    const page = localStorage.getItem("page");
+    if (!page) {
+      dispatch(pageSuccess('zone'))
+    } else {
+      dispatch(pageSuccess(page))
+    }
+  }
+}
+
+export function pageSuccess(studentPage) {
+  return {
+    type: AUTH_PAGE,
+    studentPage
+  }
 }

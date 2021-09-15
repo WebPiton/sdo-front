@@ -1,0 +1,13 @@
+.Header {
+    height: 30px;
+    background: #fff;
+}
+
+.Header .fullNamePar {
+    font-size: 20px;
+    width: -webkit-max-content;
+    width: max-content;
+    margin: auto;
+    color: #000;
+    font-family: NotoSansJP-Bold;
+}

@@ -1,0 +1,119 @@
+.startTest header {
+    height: 30px;
+    color: #000;
+    /* background: #fff; */
+}
+
+.startTest header .fullNamePar {
+    font-size: 20px;
+    width: -webkit-max-content;
+    width: max-content;
+    margin: auto;
+    color: #000;
+    font-family: NotoSansJP-Bold;
+}
+
+.startTest .startTestInfo {
+    width: 27%;
+    position: fixed;
+    top: 10%;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    padding: 15px;
+    margin-right: 20px;
+    border: 2px solid #ccc;
+    border-radius: 0 20px 20px 0;
+    font-family: Roboto-Light;
+    font-size: 18px;
+}
+
+.startTest .startTestInfo p {
+    color: #000;
+    margin: 0;
+}
+
+.startTest .startTestInfo button {
+    width: -webkit-max-content;
+    width: max-content;
+    margin: auto;
+    margin-top: 10px;
+    padding: 7px 15px;
+    background: #04BF10;
+    color: #fff;
+    border: 0;
+    border-radius: 20px;
+    font-family: Roboto-Light;
+    font-size: 18px;
+}
+
+.startTest .startTestContent {
+    margin: 20px 20px 0 32%;
+    background: #fff;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    padding: 15px;
+}
+
+.startTest .startTestContent .startTestItem {
+    margin-bottom: 20px;
+}
+
+.startTest .startTestContent .startTestItem .task {
+    border: 2px solid #05AFF2;
+    padding: 10px 0;
+    color: #000;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.startTest .startTestContent .startTestItem .contentTask {
+    font-size: 20px;
+    font-family: NotoSansJP-Bold;
+    color: #000;
+    margin: 20px 0;
+}
+
+.startTest .startTestContent .startTestItem label {
+    font-family: NotoSansJP-Bold;
+    font-size: 18px;
+    color: #000;
+}
+
+.startTest .startTestContent .startTestItem:last-child {
+    margin-bottom: 0;
+}
+
+.render {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 10000;
+    background: #fff;
+    /* padding: 100%; */
+    height: 100vh;
+    min-width: 100vh;
+    text-align: center;
+    color: #000;
+}
+
+.render .content {
+    /* width: max-content; */
+    margin: auto;
+    height: 100%;
+    width: 100%;
+    background: #fff;
+    position: absolute;
+}
+
+#answer {
+    display: flex;
+    flex-direction: column;
+    color: #000;
+}
+
+#answer > p {
+    color: #000;
+}

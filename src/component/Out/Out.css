@@ -1,0 +1,12 @@
+.out {
+    position: fixed;
+    top: 94%;
+    left: 1%;
+    background: #fff;
+    color: #f25c05;
+    border: 2px solid #000;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+}

@@ -29,8 +29,18 @@ class Auth extends Component {
                 <p className="error">{this.props.description}</p>
               </React.Fragment>
             ) : null}
+            {this.props.code === 405 ? (
+              <React.Fragment>
+                <p className="error">{this.props.description}</p>
+              </React.Fragment>
+            ) : null}
             <input className="password" type="password" placeholder="Пароль" />
             {this.props.code === 402 ? (
+              <React.Fragment>
+                <p className="error">{this.props.description}</p>
+              </React.Fragment>
+            ) : null}
+            {this.props.code === 406 ? (
               <React.Fragment>
                 <p className="error">{this.props.description}</p>
               </React.Fragment>

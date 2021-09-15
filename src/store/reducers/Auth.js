@@ -1,10 +1,11 @@
-import { AUTH_ERROR, AUTH_LOGOUT, AUTH_SUCCESS } from "../actions/actionTypes";
+import { AUTH_ERROR, AUTH_LOGOUT, AUTH_SUCCESS, AUTH_PAGE } from "../actions/actionTypes";
 
 const initialState = {
   token: null,
   description: null,
   code: null,
   role: null,
+  studentPage: "zone",
 };
 
 export default function authReducer(state = initialState, action) {
@@ -25,6 +26,11 @@ export default function authReducer(state = initialState, action) {
         ...state,
         description: action.description,
         code: action.code,
+      };
+    case AUTH_PAGE:
+      return {
+        ...state,
+        studentPage: action.studentPage
       };
     default:
       return state;

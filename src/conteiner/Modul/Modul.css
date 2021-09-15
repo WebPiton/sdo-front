@@ -1,0 +1,60 @@
+.testSelection .Header a {
+  margin: auto 10px;
+  padding: 5px 10px;
+  font-size: 20px;
+  font-family: NotoSansJP-Bold;
+  border: 0;
+  border-radius: 20px;
+  background: #05AFF2;
+  color: #fff;
+}
+
+.testSelection .testSelectionContent {
+  width: 80%;
+  background: #fff;
+  border: 2px solid #ccc;
+  border-radius: 20px;
+  margin: auto;
+  margin-top: 30px;
+  padding: 20px;
+  display: grid;
+}
+
+.testSelection .testSelectionContent .testSelectionItem {
+  background: #F28705;
+  font-family: NotoSansJP-Bold;
+  padding: 10px;
+  border: 0;
+  border-radius: 20px;
+  margin: 10px;
+}
+
+.testSelection .testSelectionContent .testSelectionItem a {
+  color: #fff;
+}
+
+.testSelection .testSelectionContent .testSelectionItem a p {
+  margin: 10px;
+  font-size: 25px;
+}
+
+.testSelection .testSelectionContent .testSelectionItem:hover {
+  background: #F29F05;
+}
+
+.testSelection .testSelectionContent .testSelectionItem .spanInfo {
+  margin-left: 20px;
+  float: right;
+}
+
+.signout {
+  position: fixed;
+  top: 94%;
+  left: 10px;
+  border: 0;
+  padding: 5px;
+  border-radius: 10px;
+  background: #29a8df;
+  color: #fff;
+  font-size: 18px;
+}

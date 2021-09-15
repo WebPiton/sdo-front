@@ -1,3 +1,8 @@
 export const AUTH_SUCCESS = 'AUTH_SUCCESS'
 export const AUTH_LOGOUT = 'AUTH_LOGOUT'
 export const AUTH_ERROR = 'AUTH_ERROR'
+export const AUTH_PAGE = 'AUTH_PAGE'
+
+export const SELECTED_STUDENT = 'SELECTED_STUDENT'
+export const AUTH_LOGOUT_STUDENT = 'AUTH_LOGOUT_STUDENT'
+export const STUDENT_ERROR = 'STUDENT_ERROR'

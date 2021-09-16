@@ -58,3 +58,18 @@
   color: #fff;
   font-size: 18px;
 }
+
+.loadmodul {
+  position: absolute;
+  background: #fff;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0
+}
+
+.loadmodul > h1 {
+  color: #000;
+  width: max-content;
+  margin: auto;
+}

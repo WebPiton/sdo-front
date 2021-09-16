@@ -76,8 +76,10 @@ class Сhoice extends Component {
             // return <Redirect to="/modul" />
         })
         .catch((err) => {
+          alert('Ошибка, страница будет перезагружена')
+          window.location.reload()
           console.log(err);
-        });
+        })
     };
 
     return (

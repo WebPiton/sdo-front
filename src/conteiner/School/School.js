@@ -17,6 +17,7 @@ class School extends Component {
       .get("/get_mo_schools/" + this.props.match.params.id)
       .then((response) => {
         const data = response.data;
+        console.log(data);
         let arr = [];
         for (let i of data) {
           if (i.type !== "Иные") {
@@ -28,8 +29,10 @@ class School extends Component {
         });
       })
       .catch((err) => {
+        alert('Ошибка, страница будет перезагружена')
+        window.location.reload()
         console.log(err);
-      });
+      })
   }
 
   render() {
@@ -49,7 +52,7 @@ class School extends Component {
                 className="link"
                 key={nanoid()}
               >
-                {item.name_full}
+                {item.name_short}
               </Link>
             );
           })}

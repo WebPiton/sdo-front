@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import "./Test.css";
-import Header from "../../component/Header/Header";
 import Countdown from "react-countdown";
 import Loader from "../../component/Loader/Loader";
 import { nanoid } from "nanoid";
 import { connect } from "react-redux";
 import { studentPage } from "../../store/actions/Auth";
-import { Redirect } from "react-router-dom";
 import axios from "../../axios/axios";
 
 class Test extends Component {
@@ -41,19 +39,24 @@ class Test extends Component {
       this.setState({
         header: result.data.header,
         questions: result.data.questions,
+        loader: true
       });
-    });
+    }).catch((err) => {
+      alert('Ошибка, страница будет перезагружена')
+      window.location.reload()
+      console.log(err);
+    })
     var tests = document.querySelectorAll(".startTestItem");
 
-    if (tests.length <= this.state.numberOfQuestions) {
-      setTimeout(() => {
-        this.setState({ loader: true });
-      }, 1000);
-    } else {
-      setTimeout(() => {
-        // window.location.reload()
-      }, 1300);
-    }
+    // if (tests.length <= this.state.numberOfQuestions) {
+    //   setTimeout(() => {
+    //     this.setState({ loader: true });
+    //   }, 1000);
+    // } else {
+    //   setTimeout(() => {
+    //     // window.location.reload()
+    //   }, 1300);
+    // }
   }
 
   render() {
@@ -63,7 +66,6 @@ class Test extends Component {
     };
 
     const Completionist = () => {
-      studentpage();
       let ans = document.querySelectorAll("input");
       let arr = [];
       for (var i = 0, length = ans.length; i < length; i++) {
@@ -72,6 +74,12 @@ class Test extends Component {
             number: ans[i].name,
             variant: ans[i].getAttribute("variant"),
             answers: ans[i].value,
+          });
+        } else {
+          arr.push({
+            number: ans[i].name,
+            variant: ans[i].getAttribute("variant"),
+            answers: null,
           });
         }
       }
@@ -97,60 +105,71 @@ class Test extends Component {
           arr,
         },
       }).then((result) => {
-        console.log(result.data.success);
-        this.props.history.push("/modul", {
-          idSchool: this.props.location.state.idSchool,
-          idGroup: this.props.location.state.idGroup,
-          idStudent: this.props.location.state.idStudent,
-          token: this.props.location.state.token,
-        });
-        // return <Redirect to='/modul' />
-      });
-    };
-
-    const vhode = () => {
-      let ans = document.querySelectorAll("input");
-      let arr = [];
-      for (var i = 0, length = ans.length; i < length; i++) {
-        if (ans[i].checked) {
-          arr.push({
-            number: ans[i].name,
-            variant: ans[i].getAttribute("variant"),
-            answers: ans[i].value,
-          });
-        }
-      }
-
-      axios({
-        url:
-          "/" +
-          this.props.location.state.idSchool +
-          "/" +
-          this.props.location.state.idGroup +
-          "/" +
-          this.props.location.state.idStudent +
-          "/end_test/",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        method: "post",
-        data: {
-          header: {
-            module_id: this.state.header.id,
-            student_token: this.props.location.state.token,
-          },
-          arr,
-        },
-      }).then((result) => {
-        console.log(result.data.success);
+        console.log(this.props.location.state);
         studentpage();
         this.props.history.push("/modul", {
           idSchool: this.props.location.state.idSchool,
           idGroup: this.props.location.state.idGroup,
           idStudent: this.props.location.state.idStudent,
           token: this.props.location.state.token,
+        })
+      }).catch((err) => {
+          console.log(err);
         });
-      });
+    };
+
+    const vhode = (e) => {
+      e.preventDefault();
+      let ans = document.querySelectorAll("input");
+      let arr = [];
+      for (var i = 0, length = ans.length; i < length; i++) {
+        if (ans[i].checked) {
+          arr.push({
+            number: ans[i].name,
+            variant: ans[i].getAttribute("variant"),
+            answers: ans[i].value,
+          });
+        } else {
+          arr.push({
+            number: ans[i].name,
+            variant: ans[i].getAttribute("variant"),
+            answers: null,
+          });
+        }
+      }
+
+      axios({
+        url:
+          "/" +
+          this.props.location.state.idSchool +
+          "/" +
+          this.props.location.state.idGroup +
+          "/" +
+          this.props.location.state.idStudent +
+          "/end_test/",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "post",
+        data: {
+          header: {
+            module_id: this.state.header.id,
+            student_token: this.props.location.state.token,
+          },
+          arr,
+        },
+      }).then((result) => {
+        console.log(this.props.location.state);
+        studentpage();
+        this.props.history.push("/modul", {
+          idSchool: this.props.location.state.idSchool,
+          idGroup: this.props.location.state.idGroup,
+          idStudent: this.props.location.state.idStudent,
+          token: this.props.location.state.token,
+        })
+      }).catch((err) => {
+          console.log(err);
+        });
     };
 
     document.body.style.overflow = "visible";
@@ -158,7 +177,7 @@ class Test extends Component {
     const renderer = ({ hours, minutes, seconds, completed }) => {
       if (this.state.loader === true) {
         if (completed) {
-          vhode()
+          Completionist();
           return <p>Время вышло</p>;
         } else {
           return (

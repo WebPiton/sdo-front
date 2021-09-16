@@ -11,7 +11,7 @@ class Zone extends Component {
     zone: []
   }
   componentDidMount() {
-    document.title = "Зона";
+    document.title = "Выбор района";
     axios.get('/get_all_mo')
       .then((response) => {
         const data = response.data;
@@ -28,8 +28,10 @@ class Zone extends Component {
         console.log(this.state.zone);
       })
       .catch((err) => {
+        // alert('Ошибка, страница будет перезагружена')
+        // window.location.reload()
         console.log(err);
-      });
+      })
   }
 
   render() {

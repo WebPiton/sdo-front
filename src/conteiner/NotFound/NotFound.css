@@ -1,5 +1,7 @@
 .notfound {
     margin: auto;
+    background: #fff;
+    padding: 20px;
 }
 
 .notfound p {

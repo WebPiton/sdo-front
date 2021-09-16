@@ -11,7 +11,7 @@ import axios from '../../axios/axios'
 
 class Modul extends Component {
   state = {
-    loading: false,
+    loading: true,
     tests: [],
   };
 
@@ -28,8 +28,13 @@ class Modul extends Component {
       }).then(result => {
         // console.log(result.data)
         this.setState({
-          tests: result.data
+          tests: result.data,
+          loading: false
         })
+      }).catch((err) => {
+        alert('Ошибка, страница будет перезагружена')
+        window.location.reload()
+        console.log(err);
       })
   }
 
@@ -46,12 +51,12 @@ class Modul extends Component {
           {/* <Header name={this.props.name} group={this.props.group} /> */}
           <div className="testSelectionContent">
             {this.state.loading ? (
-              <React.Fragment>
-                <h1 style={{ margin: "auto", marginBottom: "20px" }}>
+              <div className='loadmodul'>
+                {/* <h1>
                   Подождите загрузку
-                </h1>
+                </h1> */}
                 <Loader />
-              </React.Fragment>
+              </div>
             ) : (
               this.state.tests.map((item) => {
                 return (
@@ -73,7 +78,7 @@ class Modul extends Component {
                         Время на выполнение:{" "}
                         <span className="spanInfo" key={nanoid()}>
                           <span id="time" key={nanoid()}>
-                            45 минут
+                            45
                           </span>{" "}
                           минут
                         </span>

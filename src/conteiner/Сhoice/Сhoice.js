@@ -2,12 +2,9 @@ import React, { Component } from "react";
 import "./Сhoice.css";
 import { connect } from "react-redux";
 import { studentPage } from "../../store/actions/Auth";
-import { studentSuccess } from '../../store/actions/Student';
 import axios from "../../axios/axios";
 import { nanoid } from 'nanoid';
-import { Link } from 'react-router-dom';
 import Out from "../../component/Out/Out";
-import { Redirect } from 'react-router-dom'
 
 class Сhoice extends Component {
   state = {
@@ -36,7 +33,6 @@ class Сhoice extends Component {
       axios
         .get("/" + this.props.match.params.id + "/" + e.target.value + "/students")
         .then((response) => {
-          // console.log(response.data);
           this.setState({
             class: response.data,
           });
@@ -48,28 +44,22 @@ class Сhoice extends Component {
       this.setState({
         gid: e.target.value,
       });
-      console.log(this.state);
-      console.log(e.target.value, this.state.gid);
       document.querySelector("#fullName").style.display = "block";
+      document.querySelector(".fullNamep").style.display = "block";
     };
 
     const nameChangeHandler = (e) => {
       this.setState({
         sid: e.target.value,
       });
-      console.log(e.target.value, this.state.sid);
       document.querySelector("button").style.display = "block";
     };
 
     const Vhod = (e) => {
       e.preventDefault()
-      // console.log(this.props.match.params.id)
-      // console.log(this.state.gid);
-      // console.log(this.state.sid);
       axios
         .get("/" + this.props.match.params.id + "/" + this.state.gid + "/" + this.state.sid + '/auth')
         .then((response) => {
-          console.log(response.data);
             var qwe = "modul";
             this.props.studentPage(qwe);
             this.props.history.push("/modul", { idSchool: this.props.match.params.id, idGroup: this.state.gid, idStudent: this.state.sid, token: response.data.token})
@@ -85,6 +75,7 @@ class Сhoice extends Component {
     return (
       <div className={"loginForTest"}>
         <form id="form">
+          <p className='groupNamep'>Выберите свой класс</p>
           <select
             name=""
             id="groupName"
@@ -102,10 +93,11 @@ class Сhoice extends Component {
               );
             })}
           </select>
+          <p className='fullNamep'>Выберите ФИО</p>
           <select
             name=""
             id="fullName"
-            defaultValue={"DEFAULT"}
+            value={this.state.sid}
             onChange={nameChangeHandler}
           >
             <option value="DEFAULT" disabled="disabled">

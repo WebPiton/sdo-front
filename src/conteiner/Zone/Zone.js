@@ -25,7 +25,6 @@ class Zone extends Component {
         this.setState({
           zone: data
         })
-        console.log(this.state.zone);
       })
       .catch((err) => {
         // alert('Ошибка, страница будет перезагружена')

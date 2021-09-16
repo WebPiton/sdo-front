@@ -1,14 +1,3 @@
-.testSelection .Header a {
-  margin: auto 10px;
-  padding: 5px 10px;
-  font-size: 20px;
-  font-family: NotoSansJP-Bold;
-  border: 0;
-  border-radius: 20px;
-  background: #05AFF2;
-  color: #fff;
-}
-
 .testSelection .testSelectionContent {
   width: 80%;
   background: #fff;
@@ -21,7 +10,7 @@
 }
 
 .testSelection .testSelectionContent .testSelectionItem {
-  background: #F28705;
+  background: #29a8df;
   font-family: NotoSansJP-Bold;
   padding: 10px;
   border: 0;
@@ -39,7 +28,7 @@
 }
 
 .testSelection .testSelectionContent .testSelectionItem:hover {
-  background: #F29F05;
+  background: #00abf5;
 }
 
 .testSelection .testSelectionContent .testSelectionItem .spanInfo {

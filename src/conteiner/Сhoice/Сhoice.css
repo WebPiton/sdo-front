@@ -10,15 +10,15 @@
     width: 60%;
     margin: auto;
     padding: 20px;
-    border: 2px solid #ccc;
+    border: 2px solid #000;
     border-radius: 20px;
     background: #fff;
 }
 
 .loginForTest form select {
-    background: #F25C05;
+    background: #29a8df;
     color: #fff;
-    border: 2px solid #ccc;
+    border: 2px solid #000;
     border-radius: 20px;
     padding: 10px 15px;
     font-size: 18px;
@@ -27,7 +27,6 @@
 
 .loginForTest form #fullName {
     display: none;
-    margin-top: 10px;
 }
 
 .loginForTest form button {
@@ -49,4 +48,17 @@
     margin: 10px auto auto;
     color: red;
     font-size: 18px
+}
+
+.fullNamep {
+    display: none;
+}
+
+.fullNamep, .groupNamep {
+    color: #000;
+    font-size: 22px;
+    font-weight: 700;
+    padding: 10px 0;
+    width: max-content;
+    margin: auto;
 }

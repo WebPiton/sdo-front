@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { studentPage } from "../../store/actions/Auth";
 import { nanoid } from "nanoid";
 import Loader from '../../component/Loader/Loader'
-import Header from '../../component/Header/Header'
 import { Link } from 'react-router-dom'
 import Out from "../../component/Out/Out";
 import axios from '../../axios/axios'
@@ -17,7 +16,6 @@ class Modul extends Component {
 
   componentDidMount() {
     document.title = "Выбор теста";
-    console.log(this.props.location.state);
       axios({
         url: "/"+ this.props.idSchool + "/"+ this.props.location.state.idGroup + "/"+ this.props.location.state.idStudent + "/get_avaliable_tests",
         headers: {
@@ -26,7 +24,6 @@ class Modul extends Component {
         method: 'post',
         data: {'token': this.props.location.state.token}
       }).then(result => {
-        // console.log(result.data)
         this.setState({
           tests: result.data,
           loading: false

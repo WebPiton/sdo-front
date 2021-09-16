@@ -1,4 +1,4 @@
-import { AUTH_LOGOUT_STUDENT, SELECTED_STUDENT, STUDENT_ERROR } from "../actions/actionTypes"
+import { SELECTED_STUDENT, STUDENT_ERROR } from "../actions/actionTypes"
 
 const initialState = {
     idSchool: null,

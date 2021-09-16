@@ -1,12 +1,13 @@
 .out {
     position: fixed;
-    top: 94%;
+    top: 92%;
     left: 1%;
-    background: #fff;
-    color: #f25c05;
-    border: 2px solid #000;
+    background: #29a8df;
+    color: #fff;
+    border: 2px solid rgb(0, 0, 0);
     border-radius: 10px;
     font-size: 20px;
     font-weight: 600;
     cursor: pointer;
+    padding: 5px;
 }

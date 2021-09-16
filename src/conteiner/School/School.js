@@ -17,7 +17,6 @@ class School extends Component {
       .get("/get_mo_schools/" + this.props.match.params.id)
       .then((response) => {
         const data = response.data;
-        console.log(data);
         let arr = [];
         for (let i of data) {
           if (i.type !== "Иные") {

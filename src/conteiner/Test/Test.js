@@ -6,17 +6,23 @@ import { nanoid } from "nanoid";
 import { connect } from "react-redux";
 import { studentPage } from "../../store/actions/Auth";
 import axios from "../../axios/axios";
+import Alert from "../../component/Alert/Alert";
 
 class Test extends Component {
-  state = {
-    loader: false,
+  constructor() {
+    super();
+    this.state = {
+      interpretedAlert: null,
+      showDeclarative: false,
+      loader: false,
     header: [],
     questions: [],
     subjectName: "Математика",
     name: "Уравнение",
     timeToComplete: "45",
     numberOfQuestions: "6",
-  };
+    };
+  }
 
   componentDidMount() {
     document.title = "Тест";
@@ -46,17 +52,23 @@ class Test extends Component {
       window.location.reload()
       console.log(err);
     })
-    var tests = document.querySelectorAll(".startTestItem");
+  }
 
-    // if (tests.length <= this.state.numberOfQuestions) {
-    //   setTimeout(() => {
-    //     this.setState({ loader: true });
-    //   }, 1000);
-    // } else {
-    //   setTimeout(() => {
-    //     // window.location.reload()
-    //   }, 1300);
-    // }
+  declarativeAlert() {
+    this.setState({ showDeclarative: true });
+  }
+
+  interpretedAlert() {
+    const interpretedAlert = (
+      <Alert
+        onConfirmOrDismiss={() => this.setState({ interpretedAlert: null })}
+        show={true}
+        title={'Результат был сохранён'}
+        type={'success'}
+        cancelButtonClass={"false"}
+      />
+    );
+    this.setState({ interpretedAlert: interpretedAlert });
   }
 
   render() {
@@ -66,6 +78,7 @@ class Test extends Component {
     };
 
     const Completionist = () => {
+      this.interpretedAlert()
       let ans = document.querySelectorAll("input");
       let arr = [];
       for (var i = 0, length = ans.length; i < length; i++) {
@@ -105,7 +118,6 @@ class Test extends Component {
           arr,
         },
       }).then((result) => {
-        console.log(this.props.location.state);
         studentpage();
         this.props.history.push("/modul", {
           idSchool: this.props.location.state.idSchool,
@@ -120,6 +132,7 @@ class Test extends Component {
 
     const vhode = (e) => {
       e.preventDefault();
+      this.interpretedAlert()
       let ans = document.querySelectorAll("input");
       let arr = [];
       for (var i = 0, length = ans.length; i < length; i++) {
@@ -159,7 +172,6 @@ class Test extends Component {
           arr,
         },
       }).then((result) => {
-        console.log(this.props.location.state);
         studentpage();
         this.props.history.push("/modul", {
           idSchool: this.props.location.state.idSchool,
@@ -177,7 +189,7 @@ class Test extends Component {
     const renderer = ({ hours, minutes, seconds, completed }) => {
       if (this.state.loader === true) {
         if (completed) {
-          Completionist();
+          Completionist()
           return <p>Время вышло</p>;
         } else {
           return (
@@ -206,8 +218,7 @@ class Test extends Component {
 
     return (
       <div className="startTest">
-        <form id="answer">
-          {/* <Header name={this.props.name} group={this.props.group} /> */}
+        <form id="answer" method='post'>
           <div className="startTestInfo">
             <p>
               Название теста: <span>{this.state.header.name}</span>
@@ -223,7 +234,8 @@ class Test extends Component {
               date={Date.now() + this.state.timeToComplete * 60000}
               renderer={renderer}
             />
-            <button onClick={vhode}>Завершить тест</button>
+            {this.state.interpretedAlert}
+            <button type="submit" onClick={vhode}>Завершить тест</button>
           </div>
           <div className="startTestContent">
             {this.state.questions.map((quiz) => {

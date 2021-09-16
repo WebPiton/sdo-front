@@ -14,7 +14,7 @@ class Test extends Component {
     questions: [],
     subjectName: "Математика",
     name: "Уравнение",
-    timeToComplete: "0.1",
+    timeToComplete: "45",
     numberOfQuestions: "6",
   };
 

@@ -36,7 +36,7 @@ class Test extends Component {
           "/" +
           localStorage.getItem("idStudent") +
           "/start_test/" +
-          localStorage.getItem("idTest"),
+          this.props.location.state.id,
         headers: {
           "Content-Type": "application/json",
         },

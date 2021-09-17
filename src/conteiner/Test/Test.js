@@ -15,43 +15,47 @@ class Test extends Component {
       interpretedAlert: null,
       showDeclarative: false,
       loader: false,
-    header: [],
-    questions: [],
-    subjectName: "Математика",
-    name: "Уравнение",
-    timeToComplete: "45",
-    numberOfQuestions: "6",
+      header: [],
+      questions: [],
+      subjectName: "Математика",
+      name: "Уравнение",
+      timeToComplete: "45",
+      numberOfQuestions: "6",
     };
   }
 
   componentDidMount() {
     document.title = "Тест";
-    axios({
-      url:
-        "/" +
-        this.props.location.state.idSchool +
-        "/" +
-        this.props.location.state.idGroup +
-        "/" +
-        this.props.location.state.idStudent +
-        "/start_test/" +
-        this.props.location.state.id,
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "post",
-      data: { token: this.props.location.state.token },
-    }).then((result) => {
-      this.setState({
-        header: result.data.header,
-        questions: result.data.questions,
-        loader: true
-      });
-    }).catch((err) => {
-      alert('Ошибка, страница будет перезагружена')
-      window.location.reload()
-      console.log(err);
-    })
+    setTimeout(() => {
+      axios({
+        url:
+          "/" +
+          localStorage.getItem("idSchool") +
+          "/" +
+          localStorage.getItem("idGroup") +
+          "/" +
+          localStorage.getItem("idStudent") +
+          "/start_test/" +
+          localStorage.getItem("idTest"),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "post",
+        data: { token: localStorage.getItem("token") },
+      })
+        .then((result) => {
+          this.setState({
+            header: result.data.header,
+            questions: result.data.questions,
+            loader: true,
+          });
+        })
+        .catch((err) => {
+          alert("Ошибка, страница будет перезагружена");
+          window.location.reload();
+          console.log(err);
+        });
+    }, 100);
   }
 
   declarativeAlert() {
@@ -63,8 +67,8 @@ class Test extends Component {
       <Alert
         onConfirmOrDismiss={() => this.setState({ interpretedAlert: null })}
         show={true}
-        title={'Результат был сохранён'}
-        type={'success'}
+        title={"Результат был сохранён"}
+        type={"success"}
         cancelButtonClass={"false"}
       />
     );
@@ -78,7 +82,7 @@ class Test extends Component {
     };
 
     const Completionist = () => {
-      this.interpretedAlert()
+      this.interpretedAlert();
       let ans = document.querySelectorAll("input");
       let arr = [];
       for (var i = 0, length = ans.length; i < length; i++) {
@@ -100,11 +104,11 @@ class Test extends Component {
       axios({
         url:
           "/" +
-          this.props.location.state.idSchool +
+          localStorage.getItem("idSchool") +
           "/" +
-          this.props.location.state.idGroup +
+          localStorage.getItem("idGroup") +
           "/" +
-          this.props.location.state.idStudent +
+          localStorage.getItem("idStudent") +
           "/end_test/",
         headers: {
           "Content-Type": "application/json",
@@ -113,26 +117,28 @@ class Test extends Component {
         data: {
           header: {
             module_id: this.state.header.id,
-            student_token: this.props.location.state.token,
+            student_token: localStorage.getItem("token"),
           },
           arr,
         },
-      }).then((result) => {
-        studentpage();
-        this.props.history.push("/modul", {
-          idSchool: this.props.location.state.idSchool,
-          idGroup: this.props.location.state.idGroup,
-          idStudent: this.props.location.state.idStudent,
-          token: this.props.location.state.token,
+      })
+        .then((result) => {
+          studentpage();
+          this.props.history.push("/modul", {
+            idSchool: localStorage.getItem("idSchool"),
+            idGroup: localStorage.getItem("idGroup"),
+            idStudent: localStorage.getItem("idStudent"),
+            token: localStorage.getItem("token"),
+          });
         })
-      }).catch((err) => {
+        .catch((err) => {
           console.log(err);
         });
     };
 
     const vhode = (e) => {
       e.preventDefault();
-      this.interpretedAlert()
+      this.interpretedAlert();
       let ans = document.querySelectorAll("input");
       let arr = [];
       for (var i = 0, length = ans.length; i < length; i++) {
@@ -154,11 +160,11 @@ class Test extends Component {
       axios({
         url:
           "/" +
-          this.props.location.state.idSchool +
+          localStorage.getItem("idSchool") +
           "/" +
-          this.props.location.state.idGroup +
+          localStorage.getItem("idGroup") +
           "/" +
-          this.props.location.state.idStudent +
+          localStorage.getItem("idStudent") +
           "/end_test/",
         headers: {
           "Content-Type": "application/json",
@@ -167,19 +173,21 @@ class Test extends Component {
         data: {
           header: {
             module_id: this.state.header.id,
-            student_token: this.props.location.state.token,
+            student_token: localStorage.getItem("token"),
           },
           arr,
         },
-      }).then((result) => {
-        studentpage();
-        this.props.history.push("/modul", {
-          idSchool: this.props.location.state.idSchool,
-          idGroup: this.props.location.state.idGroup,
-          idStudent: this.props.location.state.idStudent,
-          token: this.props.location.state.token,
+      })
+        .then((result) => {
+          studentpage();
+          this.props.history.push("/modul", {
+            idSchool: localStorage.getItem("idSchool"),
+            idGroup: localStorage.getItem("idGroup"),
+            idStudent: localStorage.getItem("idStudent"),
+            token: localStorage.getItem("token"),
+          });
         })
-      }).catch((err) => {
+        .catch((err) => {
           console.log(err);
         });
     };
@@ -189,7 +197,7 @@ class Test extends Component {
     const renderer = ({ hours, minutes, seconds, completed }) => {
       if (this.state.loader === true) {
         if (completed) {
-          Completionist()
+          Completionist();
           return <p>Время вышло</p>;
         } else {
           return (
@@ -218,7 +226,7 @@ class Test extends Component {
 
     return (
       <div className="startTest">
-        <form id="answer" method='post'>
+        <form id="answer" method="post">
           <div className="startTestInfo">
             <p>
               Название теста: <span>{this.state.header.name}</span>
@@ -235,7 +243,9 @@ class Test extends Component {
               renderer={renderer}
             />
             {this.state.interpretedAlert}
-            <button type="submit" onClick={vhode}>Завершить тест</button>
+            <button type="submit" onClick={vhode}>
+              Завершить тест
+            </button>
           </div>
           <div className="startTestContent">
             {this.state.questions.map((quiz) => {

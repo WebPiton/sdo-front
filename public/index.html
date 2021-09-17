@@ -24,21 +24,5 @@
   <body oncopy="wpccAlert('wpcc-fail','Copying is disabled.'); return false;" oncut="wpccAlert('wpcc-fail','Copying is disabled.'); return false;" ondragstart="return false;" ondrop="return false;" oncontextmenu="return false;">
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <script>
-      document.ondragstart = test;
-      //запрет на перетаскивание
-      document.onselectstart = test;
-      //запрет на выделение элементов страницы
-      document.oncontextmenu = test;
-      //запрет на выведение контекстного меню
-      function test() {
-      return false
-      }
-      document.onkeydown = function(event) {
-          if (event.ctrlKey && (event.keyCode == 85) || (event.ctrlKey && event.shiftKey && (event.keyCode == 73)) || event.keyCode == 123) {
-              return false
-          }
-      }
-    </script>
   </body>
 </html>

@@ -17,9 +17,46 @@ class App extends Component {
     setInterval(() => {
       this.props.autoPage();
     }, 100);
+    setInterval(() => {
+      if (this.props.location.state !== undefined) {
+        if (this.props.location.state.idZone !== undefined && localStorage.getItem("idZone") !== this.props.location.state.idZone) {
+          localStorage.setItem("idZone", this.props.location.state.idZone);
+          // console.log(this.props.location.state.idZone);
+        }
+        if (this.props.location.state.idSchool !== undefined && localStorage.getItem("idSchool") !== this.props.location.state.idSchool) {
+          localStorage.setItem("idSchool", this.props.location.state.idSchool);
+          // console.log(this.props.location.state.idSchool);
+        }
+        if (this.props.location.state.idGroup !== undefined && localStorage.getItem("idGroup") !== this.props.location.state.idGroup) {
+          localStorage.setItem("idGroup", this.props.location.state.idGroup);
+          // console.log(this.props.location.state.idGroup);
+        }
+        if (this.props.location.state.idStudent !== undefined && localStorage.getItem("idStudent") !== this.props.location.state.idStudent) {
+          localStorage.setItem("idStudent", this.props.location.state.idStudent);
+          // console.log(this.props.location.state.idStudent);
+        }
+        if (this.props.location.state.token !== undefined && localStorage.getItem("token") !== this.props.location.state.token) {
+          localStorage.setItem("token", this.props.location.state.token);
+          // console.log(this.props.location.state.token);
+        }
+        if (this.props.location.state.idTest !== undefined && localStorage.getItem("idTest") !== this.props.location.state.idTest) {
+          localStorage.setItem("idTest", this.props.location.state.idTest);
+          // console.log(this.props.location.state.idTest);
+        }
+      } else {
+        localStorage.removeItem("idZone");
+        localStorage.removeItem("idSchool");
+        localStorage.removeItem("idGroup");
+        localStorage.removeItem("idStudent");
+        localStorage.removeItem("token");
+        localStorage.removeItem("idTest");
+      }
+    }, 0.1);
   }
 
   render() {
+    // console.log(this.props.location.state.idSchool !== null && localStorage.getItem("idSchool") !== this.props.location.state.idSchool);
+    // console.log(this.props.location.state !== undefined );
     function routerStudent(student) {
       switch (student) {
         case "zone":

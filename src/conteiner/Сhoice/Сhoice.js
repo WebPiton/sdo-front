@@ -3,7 +3,7 @@ import "./Сhoice.css";
 import { connect } from "react-redux";
 import { studentPage } from "../../store/actions/Auth";
 import axios from "../../axios/axios";
-import { nanoid } from 'nanoid';
+import { nanoid } from "nanoid";
 import Out from "../../component/Out/Out";
 
 class Сhoice extends Component {
@@ -16,22 +16,30 @@ class Сhoice extends Component {
 
   componentDidMount() {
     document.title = "Выбор ученика";
-    axios
-      .get("/"+ this.props.match.params.id +"/classes")
-      .then((response) => {
-        this.setState({
-          group: response.data,
+    setTimeout(() => {
+      axios
+        .get("/" + localStorage.getItem("idSchool") + "/classes")
+        .then((response) => {
+          this.setState({
+            group: response.data,
+          });
+        })
+        .catch((err) => {
+          console.log(err);
         });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    }, 10);
   }
 
   render() {
     const groupChangeHandler = (e) => {
       axios
-        .get("/" + this.props.match.params.id + "/" + e.target.value + "/students")
+        .get(
+          "/" +
+            localStorage.getItem("idSchool") +
+            "/" +
+            e.target.value +
+            "/students"
+        )
         .then((response) => {
           this.setState({
             class: response.data,
@@ -56,26 +64,38 @@ class Сhoice extends Component {
     };
 
     const Vhod = (e) => {
-      e.preventDefault()
+      e.preventDefault();
       axios
-        .get("/" + this.props.match.params.id + "/" + this.state.gid + "/" + this.state.sid + '/auth')
+        .get(
+          "/" +
+            localStorage.getItem("idSchool") +
+            "/" +
+            this.state.gid +
+            "/" +
+            this.state.sid +
+            "/auth"
+        )
         .then((response) => {
-            var qwe = "modul";
-            this.props.studentPage(qwe);
-            this.props.history.push("/modul", { idSchool: this.props.match.params.id, idGroup: this.state.gid, idStudent: this.state.sid, token: response.data.token})
-            // return <Redirect to="/modul" />
+          var qwe = "modul";
+          this.props.studentPage(qwe);
+          this.props.history.push("/modul", {
+            idSchool: localStorage.getItem("idSchool"),
+            idGroup: this.state.gid,
+            idStudent: this.state.sid,
+            token: response.data.token,
+          });
         })
         .catch((err) => {
-          alert('Ошибка, страница будет перезагружена')
-          window.location.reload()
+          alert("Ошибка, страница будет перезагружена");
+          window.location.reload();
           console.log(err);
-        })
+        });
     };
 
     return (
       <div className={"loginForTest"}>
         <form id="form">
-          <p className='groupNamep'>Выберите свой класс</p>
+          <p className="groupNamep">Выберите свой класс</p>
           <select
             name=""
             id="groupName"
@@ -93,7 +113,7 @@ class Сhoice extends Component {
               );
             })}
           </select>
-          <p className='fullNamep'>Выберите ФИО</p>
+          <p className="fullNamep">Выберите ФИО</p>
           <select
             name=""
             id="fullName"
@@ -106,11 +126,7 @@ class Сhoice extends Component {
             {this.state.class.map((item) => {
               return (
                 <option value={item.id} key={nanoid()}>
-                  {item.name +
-                    " " +
-                    item.last_name +
-                    " " +
-                    item.patrn}
+                  {item.name + " " + item.last_name + " " + item.patrn}
                 </option>
               );
             })}
@@ -121,9 +137,7 @@ class Сhoice extends Component {
               <p className="error">{this.props.error}</p>
             </React.Fragment>
           ) : null}
-          {/* <Link to="/modul" onClick={Vhod}> */}
-            <button onClick={Vhod}>Войти</button>
-          {/* </Link> */}
+          <button onClick={Vhod}>Войти</button>
         </form>
         <Out />
       </div>

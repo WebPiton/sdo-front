@@ -3,10 +3,10 @@ import "./Modul.css";
 import { connect } from "react-redux";
 import { studentPage } from "../../store/actions/Auth";
 import { nanoid } from "nanoid";
-import Loader from '../../component/Loader/Loader'
-import { Link } from 'react-router-dom'
+import Loader from "../../component/Loader/Loader";
+import { Link } from "react-router-dom";
 import Out from "../../component/Out/Out";
-import axios from '../../axios/axios'
+import axios from "../../axios/axios";
 
 class Modul extends Component {
   state = {
@@ -16,27 +16,37 @@ class Modul extends Component {
 
   componentDidMount() {
     document.title = "Выбор теста";
+    setTimeout(() => {
       axios({
-        url: "/"+ this.props.idSchool + "/"+ this.props.location.state.idGroup + "/"+ this.props.location.state.idStudent + "/get_avaliable_tests",
+        url:
+          "/" +
+          localStorage.getItem("idSchool") +
+          "/" +
+          localStorage.getItem("idGroup") +
+          "/" +
+          localStorage.getItem("idStudent") +
+          "/get_avaliable_tests",
         headers: {
           "Content-Type": "application/json",
         },
-        method: 'post',
-        data: {'token': this.props.location.state.token}
-      }).then(result => {
-        this.setState({
-          tests: result.data,
-          loading: false
-        })
-      }).catch((err) => {
-        alert('Ошибка, страница будет перезагружена')
-        window.location.reload()
-        console.log(err);
+        method: "post",
+        data: { token: localStorage.getItem("token") },
       })
+        .then((result) => {
+          this.setState({
+            tests: result.data,
+            loading: false,
+          });
+        })
+        .catch((err) => {
+          alert("Ошибка, страница будет перезагружена");
+          window.location.reload();
+          console.log(err);
+        });
+    }, 10);
   }
 
   render() {
-
     const studentpage = () => {
       var qwe = "test";
       this.props.studentPage(qwe);
@@ -45,20 +55,37 @@ class Modul extends Component {
     return (
       <React.Fragment>
         <div className="testSelection">
-          {/* <Header name={this.props.name} group={this.props.group} /> */}
           <div className="testSelectionContent">
             {this.state.loading ? (
-              <div className='loadmodul'>
-                {/* <h1>
-                  Подождите загрузку
-                </h1> */}
+              <div className="loadmodul">
+                <h1>Подождите загрузку</h1>
                 <Loader />
               </div>
-            ) : (
+            ) : this.state.tests.length !== 0 ? (
               this.state.tests.map((item) => {
                 return (
-                  <div className="testSelectionItem" key={nanoid()}>
-                    <Link to={{ pathname: '/test', state: {id: item.id, idSchool: this.props.location.state.idSchool, idGroup: this.props.location.state.idGroup, idStudent: this.props.location.state.idStudent, token: this.props.location.state.token} }} onClick={studentpage} key={nanoid()}>
+                  <div
+                    className={
+                      item.isCompleted === true
+                        ? "testSelectionItemClose"
+                        : "testSelectionItem"
+                    }
+                    key={nanoid()}
+                  >
+                    <Link
+                      to={{
+                        pathname: "/test",
+                        state: {
+                          id: item.id,
+                          idSchool: localStorage.getItem("idSchool"),
+                          idGroup: localStorage.getItem("idGroup"),
+                          idStudent: localStorage.getItem("idStudent"),
+                          token: localStorage.getItem("token"),
+                        },
+                      }}
+                      onClick={studentpage}
+                      key={nanoid()}
+                    >
                       <p key={nanoid()}>
                         Название предмета:{" "}
                         <span className="spanInfo" key={nanoid()}>
@@ -71,19 +98,31 @@ class Modul extends Component {
                           {item.name}
                         </span>
                       </p>
-                      <p key={nanoid()}>
-                        Время на выполнение:{" "}
-                        <span className="spanInfo" key={nanoid()}>
-                          <span id="time" key={nanoid()}>
-                            45
-                          </span>{" "}
-                          минут
-                        </span>
-                      </p>
+                      {item.isCompleted === true ? (
+                        <p
+                          className={
+                            item.isCompleted === true ? "linkclose" : null
+                          }
+                          key={nanoid()}
+                        >
+                          Тест уже пройден
+                        </p>
+                      ) : (
+                        <p key={nanoid()}>
+                          Время на выполнение:{" "}
+                          <span className="spanInfo" key={nanoid()}>
+                            <span id="time" key={nanoid()}>
+                              45 минут
+                            </span>
+                          </span>
+                        </p>
+                      )}
                     </Link>
                   </div>
                 );
               })
+            ) : (
+              <h1 className="notest">Тестов нет</h1>
             )}
           </div>
         </div>

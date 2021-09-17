@@ -15,20 +15,13 @@ class Zone extends Component {
     axios.get('/get_all_mo')
       .then((response) => {
         const data = response.data;
-        // console.log(data);
-        // for (let i of data){
-        //   console.log(i.mo);
-        //   this.setState({
-        //     zone: i.id
-        //   })
-        // }
         this.setState({
           zone: data
         })
       })
       .catch((err) => {
-        // alert('Ошибка, страница будет перезагружена')
-        // window.location.reload()
+        alert('Ошибка, страница будет перезагружена')
+        window.location.reload()
         console.log(err);
       })
   }

@@ -1,7 +1,7 @@
 .testSelection .testSelectionContent {
   width: 80%;
   background: #fff;
-  border: 2px solid #ccc;
+  border: 3px solid #000;
   border-radius: 20px;
   margin: auto;
   margin-top: 30px;
@@ -18,11 +18,35 @@
   margin: 10px;
 }
 
-.testSelection .testSelectionContent .testSelectionItem a {
+.testSelection .testSelectionContent .testSelectionItemClose {
+  background: #29a8df;
+  font-family: NotoSansJP-Bold;
+  padding: 10px;
+  border: 0;
+  border-radius: 20px;
+  margin: 10px;
+  pointer-events: none;
+  cursor: default;
+}
+
+.testSelection .testSelectionContent .testSelectionItem a, .testSelection .testSelectionContent .testSelectionItemClose a {
   color: #fff;
 }
 
-.testSelection .testSelectionContent .testSelectionItem a p {
+.testSelection .testSelectionContent .testSelectionItemClose .linkclose {
+  width: max-content;
+  margin: auto;
+  font-weight: 600;
+  color: #ff1d1d;
+  font-size: 30px;
+}
+
+.testSelection .testSelectionContent .testSelectionItem a #time {
+  color: #00ff00;
+  font-weight: 600;
+}
+
+.testSelection .testSelectionContent .testSelectionItem a p, .testSelection .testSelectionContent .testSelectionItemClose a p {
   margin: 10px;
   font-size: 25px;
 }
@@ -31,9 +55,16 @@
   background: #00abf5;
 }
 
-.testSelection .testSelectionContent .testSelectionItem .spanInfo {
+.testSelection .testSelectionContent .testSelectionItem .spanInfo, .testSelection .testSelectionContent .testSelectionItemClose .spanInfo {
   margin-left: 20px;
   float: right;
+}
+
+.testSelection .testSelectionContent .notest {
+  color: #000;
+  width: max-content;
+  margin: auto;
+  font-weight: 700;
 }
 
 .signout {
@@ -61,4 +92,10 @@
   color: #000;
   width: max-content;
   margin: auto;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 40%;
+  left: 50%;
+  font-size: 30px;
+  font-weight: 700;
 }

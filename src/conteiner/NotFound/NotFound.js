@@ -24,11 +24,9 @@ class NotFound extends Component {
       <div className='notfound'>
         <img src={notfound} alt='notfound' />
         <p>Такой страницы не существует</p>
-        {this.props.page === "test" ? null : (
           <button className='outnot' onClick={out}>
             Главная
           </button>
-        )}
       </div>
     );
   }

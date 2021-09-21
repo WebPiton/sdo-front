@@ -220,9 +220,15 @@ class Test extends Component {
       }
     };
 
+    const handleKeyDown = (event) => {
+      if (event.keyCode === 13) {
+          event.preventDefault();
+      }
+  }
+
     return (
       <div className="startTest">
-        <form id="answer" method="post">
+        <form id="answer" method="post" onKeyDown={handleKeyDown}>
           <div className="startTestInfo">
             <p>
               Название теста: <span>{this.state.header.name}</span>

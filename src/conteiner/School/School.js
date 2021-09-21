@@ -19,7 +19,15 @@ class School extends Component {
         const data = response.data;
         let arr = [];
         for (let i of data) {
-          if (i.type !== "Иные") {
+          if (
+            i.type !== "Иные" &&
+            i.type !==
+              "Образовательные учреждения среднего профессионального образования (Средние специальные учебные заведения)" &&
+            i.type !== "Дошкольные образовательные учреждения" &&
+            i.type !==
+              "Образовательные учреждения высшего профессионального образования (Высшие учебные заведения)" &&
+            i.type !== 'Образовательные учреждения дополнительного образования детей'
+          ) {
             arr.push(i);
           }
         }
@@ -28,10 +36,10 @@ class School extends Component {
         });
       })
       .catch((err) => {
-        alert('Ошибка, страница будет перезагружена')
-        window.location.reload()
+        alert("Ошибка, страница будет перезагружена");
+        window.location.reload();
         console.log(err);
-      })
+      });
   }
 
   render() {
@@ -46,7 +54,10 @@ class School extends Component {
           {this.state.school.map((item) => {
             return (
               <Link
-                to={{ pathname: "/choice/" + item.id, state: { idSchool: item.id} }}
+                to={{
+                  pathname: "/choice/" + item.id,
+                  state: { idSchool: item.id },
+                }}
                 onClick={studentpage}
                 className="link"
                 key={nanoid()}

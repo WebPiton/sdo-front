@@ -20,17 +20,17 @@ class Modul extends Component {
       axios({
         url:
           "/" +
-          localStorage.getItem("idSchool") +
+          sessionStorage.getItem("idSchool") +
           "/" +
-          localStorage.getItem("idGroup") +
+          sessionStorage.getItem("idGroup") +
           "/" +
-          localStorage.getItem("idStudent") +
+          sessionStorage.getItem("idStudent") +
           "/get_avaliable_tests",
         headers: {
           "Content-Type": "application/json",
         },
         method: "post",
-        data: { token: localStorage.getItem("token") },
+        data: { token: sessionStorage.getItem("token") },
       })
         .then((result) => {
           this.setState({
@@ -77,10 +77,10 @@ class Modul extends Component {
                         pathname: "/test",
                         state: {
                           id: item.id,
-                          idSchool: localStorage.getItem("idSchool"),
-                          idGroup: localStorage.getItem("idGroup"),
-                          idStudent: localStorage.getItem("idStudent"),
-                          token: localStorage.getItem("token"),
+                          idSchool: sessionStorage.getItem("idSchool"),
+                          idGroup: sessionStorage.getItem("idGroup"),
+                          idStudent: sessionStorage.getItem("idStudent"),
+                          token: sessionStorage.getItem("token"),
                         },
                       }}
                       onClick={studentpage}

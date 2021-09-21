@@ -13,14 +13,10 @@ class Test extends Component {
     super();
     this.state = {
       interpretedAlert: null,
-      showDeclarative: false,
       loader: false,
       header: [],
       questions: [],
-      subjectName: "Математика",
-      name: "Уравнение",
       timeToComplete: "45",
-      numberOfQuestions: "6",
     };
   }
 
@@ -30,18 +26,18 @@ class Test extends Component {
       axios({
         url:
           "/" +
-          localStorage.getItem("idSchool") +
+          sessionStorage.getItem("idSchool") +
           "/" +
-          localStorage.getItem("idGroup") +
+          sessionStorage.getItem("idGroup") +
           "/" +
-          localStorage.getItem("idStudent") +
+          sessionStorage.getItem("idStudent") +
           "/start_test/" +
           this.props.location.state.id,
         headers: {
           "Content-Type": "application/json",
         },
         method: "post",
-        data: { token: localStorage.getItem("token") },
+        data: { token: sessionStorage.getItem("token") },
       })
         .then((result) => {
           this.setState({
@@ -104,11 +100,11 @@ class Test extends Component {
       axios({
         url:
           "/" +
-          localStorage.getItem("idSchool") +
+          sessionStorage.getItem("idSchool") +
           "/" +
-          localStorage.getItem("idGroup") +
+          sessionStorage.getItem("idGroup") +
           "/" +
-          localStorage.getItem("idStudent") +
+          sessionStorage.getItem("idStudent") +
           "/end_test/",
         headers: {
           "Content-Type": "application/json",
@@ -117,7 +113,7 @@ class Test extends Component {
         data: {
           header: {
             module_id: this.state.header.id,
-            student_token: localStorage.getItem("token"),
+            student_token: sessionStorage.getItem("token"),
           },
           arr,
         },
@@ -125,10 +121,10 @@ class Test extends Component {
         .then((result) => {
           studentpage();
           this.props.history.push("/modul", {
-            idSchool: localStorage.getItem("idSchool"),
-            idGroup: localStorage.getItem("idGroup"),
-            idStudent: localStorage.getItem("idStudent"),
-            token: localStorage.getItem("token"),
+            idSchool: sessionStorage.getItem("idSchool"),
+            idGroup: sessionStorage.getItem("idGroup"),
+            idStudent: sessionStorage.getItem("idStudent"),
+            token: sessionStorage.getItem("token"),
           });
         })
         .catch((err) => {
@@ -160,11 +156,11 @@ class Test extends Component {
       axios({
         url:
           "/" +
-          localStorage.getItem("idSchool") +
+          sessionStorage.getItem("idSchool") +
           "/" +
-          localStorage.getItem("idGroup") +
+          sessionStorage.getItem("idGroup") +
           "/" +
-          localStorage.getItem("idStudent") +
+          sessionStorage.getItem("idStudent") +
           "/end_test/",
         headers: {
           "Content-Type": "application/json",
@@ -173,7 +169,7 @@ class Test extends Component {
         data: {
           header: {
             module_id: this.state.header.id,
-            student_token: localStorage.getItem("token"),
+            student_token: sessionStorage.getItem("token"),
           },
           arr,
         },
@@ -181,10 +177,10 @@ class Test extends Component {
         .then((result) => {
           studentpage();
           this.props.history.push("/modul", {
-            idSchool: localStorage.getItem("idSchool"),
-            idGroup: localStorage.getItem("idGroup"),
-            idStudent: localStorage.getItem("idStudent"),
-            token: localStorage.getItem("token"),
+            idSchool: sessionStorage.getItem("idSchool"),
+            idGroup: sessionStorage.getItem("idGroup"),
+            idStudent: sessionStorage.getItem("idStudent"),
+            token: sessionStorage.getItem("token"),
           });
         })
         .catch((err) => {
@@ -248,12 +244,13 @@ class Test extends Component {
             </button>
           </div>
           <div className="startTestContent">
-            {this.state.questions.map((quiz) => {
+            {this.state.questions.map((quiz, index) => {
               return (
                 <div className="startTestItem" key={nanoid()}>
                   <h1 key={nanoid()} className="task">
-                    Задание №{quiz.number}
+                    Задание № {index + 1}
                   </h1>
+                  {quiz.image !== null ? <img src={quiz.image} alt='' /> : null}
                   <p key={nanoid()} className="contentTask">
                     {quiz.text}
                   </p>

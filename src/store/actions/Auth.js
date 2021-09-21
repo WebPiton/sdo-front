@@ -126,14 +126,14 @@ export function authError(code, description) {
 
 export function studentPage(page) {
   return (dispatch) => {
-    localStorage.setItem("page", page);
+    sessionStorage.setItem("page", page);
     dispatch(pageSuccess(page))
   }
 }
 
 export function autoPage() {
   return (dispatch) => {
-    const page = localStorage.getItem("page");
+    const page = sessionStorage.getItem("page");
     if (!page) {
       dispatch(pageSuccess('zone'))
     } else {

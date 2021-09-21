@@ -20,8 +20,8 @@ class Zone extends Component {
         })
       })
       .catch((err) => {
-        alert('Ошибка, страница будет перезагружена')
-        window.location.reload()
+        // alert('Ошибка, страница будет перезагружена')
+        // window.location.reload()
         console.log(err);
       })
   }

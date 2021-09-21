@@ -18,7 +18,7 @@ class Сhoice extends Component {
     document.title = "Выбор ученика";
     setTimeout(() => {
       axios
-        .get("/" + localStorage.getItem("idSchool") + "/classes")
+        .get("/" + sessionStorage.getItem("idSchool") + "/classes")
         .then((response) => {
           this.setState({
             group: response.data,
@@ -35,7 +35,7 @@ class Сhoice extends Component {
       axios
         .get(
           "/" +
-            localStorage.getItem("idSchool") +
+            sessionStorage.getItem("idSchool") +
             "/" +
             e.target.value +
             "/students"
@@ -68,7 +68,7 @@ class Сhoice extends Component {
       axios
         .get(
           "/" +
-            localStorage.getItem("idSchool") +
+            sessionStorage.getItem("idSchool") +
             "/" +
             this.state.gid +
             "/" +
@@ -79,7 +79,7 @@ class Сhoice extends Component {
           var qwe = "modul";
           this.props.studentPage(qwe);
           this.props.history.push("/modul", {
-            idSchool: localStorage.getItem("idSchool"),
+            idSchool: sessionStorage.getItem("idSchool"),
             idGroup: this.state.gid,
             idStudent: this.state.sid,
             token: response.data.token,

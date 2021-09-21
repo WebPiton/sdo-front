@@ -19,43 +19,43 @@ class App extends Component {
     }, 100);
     setInterval(() => {
       if (this.props.location.state !== undefined) {
-        if (this.props.location.state.idZone !== undefined && localStorage.getItem("idZone") !== this.props.location.state.idZone) {
-          localStorage.setItem("idZone", this.props.location.state.idZone);
+        if (this.props.location.state.idZone !== undefined && sessionStorage.getItem("idZone") !== this.props.location.state.idZone) {
+          sessionStorage.setItem("idZone", this.props.location.state.idZone);
           // console.log(this.props.location.state.idZone);
         }
-        if (this.props.location.state.idSchool !== undefined && localStorage.getItem("idSchool") !== this.props.location.state.idSchool) {
-          localStorage.setItem("idSchool", this.props.location.state.idSchool);
+        if (this.props.location.state.idSchool !== undefined && sessionStorage.getItem("idSchool") !== this.props.location.state.idSchool) {
+          sessionStorage.setItem("idSchool", this.props.location.state.idSchool);
           // console.log(this.props.location.state.idSchool);
         }
-        if (this.props.location.state.idGroup !== undefined && localStorage.getItem("idGroup") !== this.props.location.state.idGroup) {
-          localStorage.setItem("idGroup", this.props.location.state.idGroup);
+        if (this.props.location.state.idGroup !== undefined && sessionStorage.getItem("idGroup") !== this.props.location.state.idGroup) {
+          sessionStorage.setItem("idGroup", this.props.location.state.idGroup);
           // console.log(this.props.location.state.idGroup);
         }
-        if (this.props.location.state.idStudent !== undefined && localStorage.getItem("idStudent") !== this.props.location.state.idStudent) {
-          localStorage.setItem("idStudent", this.props.location.state.idStudent);
+        if (this.props.location.state.idStudent !== undefined && sessionStorage.getItem("idStudent") !== this.props.location.state.idStudent) {
+          sessionStorage.setItem("idStudent", this.props.location.state.idStudent);
           // console.log(this.props.location.state.idStudent);
         }
-        if (this.props.location.state.token !== undefined && localStorage.getItem("token") !== this.props.location.state.token) {
-          localStorage.setItem("token", this.props.location.state.token);
+        if (this.props.location.state.token !== undefined && sessionStorage.getItem("token") !== this.props.location.state.token) {
+          sessionStorage.setItem("token", this.props.location.state.token);
           // console.log(this.props.location.state.token);
         }
-        if (this.props.location.state.idTest !== undefined && localStorage.getItem("idTest") !== this.props.location.state.idTest) {
-          localStorage.setItem("idTest", this.props.location.state.idTest);
+        if (this.props.location.state.idTest !== undefined && sessionStorage.getItem("idTest") !== this.props.location.state.idTest) {
+          sessionStorage.setItem("idTest", this.props.location.state.idTest);
           // console.log(this.props.location.state.idTest);
         }
       } else {
-        localStorage.removeItem("idZone");
-        localStorage.removeItem("idSchool");
-        localStorage.removeItem("idGroup");
-        localStorage.removeItem("idStudent");
-        localStorage.removeItem("token");
-        localStorage.removeItem("idTest");
+        sessionStorage.removeItem("idZone");
+        sessionStorage.removeItem("idSchool");
+        sessionStorage.removeItem("idGroup");
+        sessionStorage.removeItem("idStudent");
+        sessionStorage.removeItem("token");
+        sessionStorage.removeItem("idTest");
       }
     }, 0.1);
   }
 
   render() {
-    // console.log(this.props.location.state.idSchool !== null && localStorage.getItem("idSchool") !== this.props.location.state.idSchool);
+    // console.log(this.props.location.state.idSchool !== null && sessionStorage.getItem("idSchool") !== this.props.location.state.idSchool);
     // console.log(this.props.location.state !== undefined );
     function routerStudent(student) {
       switch (student) {

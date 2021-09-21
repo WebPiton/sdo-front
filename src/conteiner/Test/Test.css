@@ -60,6 +60,8 @@
     border: 2px solid #ccc;
     border-radius: 20px;
     padding: 15px;
+    /* width: 50%; */
+    max-width: 800px;
 }
 
 .startTest .startTestContent .startTestItem {

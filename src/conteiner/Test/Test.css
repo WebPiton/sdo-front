@@ -68,6 +68,10 @@
     margin-bottom: 20px;
 }
 
+.startTest .startTestContent .startTestItem img {
+    width: 100%;
+}
+
 .startTest .startTestContent .startTestItem .task {
     border: 3px solid #000;
     padding: 10px 0;

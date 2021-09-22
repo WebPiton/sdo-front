@@ -58,12 +58,12 @@ class Test extends Component {
     this.setState({ showDeclarative: true });
   }
 
-  interpretedAlert() {
+  interpretedAlert(title) {
     const interpretedAlert = (
       <Alert
         onConfirmOrDismiss={() => this.setState({ interpretedAlert: null })}
         show={true}
-        title={"Результат был сохранён"}
+        title={title}
         type={"success"}
         cancelButtonClass={"false"}
       />
@@ -134,7 +134,6 @@ class Test extends Component {
 
     const vhode = (e) => {
       e.preventDefault();
-      this.interpretedAlert();
       let ans = document.querySelectorAll("input");
       let arr = [];
       for (var i = 0, length = ans.length; i < length; i++) {
@@ -175,15 +174,19 @@ class Test extends Component {
         },
       })
         .then((result) => {
-          studentpage();
-          this.props.history.push("/modul", {
-            idSchool: sessionStorage.getItem("idSchool"),
-            idGroup: sessionStorage.getItem("idGroup"),
-            idStudent: sessionStorage.getItem("idStudent"),
-            token: sessionStorage.getItem("token"),
-          });
+          if (result.data.success === true) {
+            this.interpretedAlert('Результат сохранён');
+            studentpage();
+            this.props.history.push("/modul", {
+              idSchool: sessionStorage.getItem("idSchool"),
+              idGroup: sessionStorage.getItem("idGroup"),
+              idStudent: sessionStorage.getItem("idStudent"),
+              token: sessionStorage.getItem("token"),
+            });
+          }
         })
         .catch((err) => {
+          alert('Тест не отправлен')
           console.log(err);
         });
     };
@@ -222,9 +225,9 @@ class Test extends Component {
 
     const handleKeyDown = (event) => {
       if (event.keyCode === 13) {
-          event.preventDefault();
+        event.preventDefault();
       }
-  }
+    };
 
     return (
       <div className="startTest">
@@ -256,7 +259,7 @@ class Test extends Component {
                   <h1 key={nanoid()} className="task">
                     Задание № {index + 1}
                   </h1>
-                  {quiz.image !== null ? <img src={quiz.image} alt='' /> : null}
+                  {quiz.image !== null ? <img src={quiz.image} alt="" /> : null}
                   <p key={nanoid()} className="contentTask">
                     {quiz.text}
                   </p>

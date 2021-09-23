@@ -175,7 +175,7 @@ class Test extends Component {
       })
         .then((result) => {
           if (result.data.success === true) {
-            this.interpretedAlert('Результат сохранён');
+            this.interpretedAlert("Результат сохранён");
             studentpage();
             this.props.history.push("/modul", {
               idSchool: sessionStorage.getItem("idSchool"),
@@ -186,7 +186,7 @@ class Test extends Component {
           }
         })
         .catch((err) => {
-          alert('Тест не отправлен')
+          alert("Тест не отправлен");
           console.log(err);
         });
     };
@@ -259,10 +259,19 @@ class Test extends Component {
                   <h1 key={nanoid()} className="task">
                     Задание № {index + 1}
                   </h1>
-                  {quiz.image !== null ? <img src={quiz.image} alt="" /> : null}
-                  <p key={nanoid()} className="contentTask">
-                    {quiz.text}
-                  </p>
+                  {quiz.image !== null ? (
+                    <div className="exercise">
+                      <p key={nanoid()} className="contentTask">
+                        {quiz.text}
+                      </p>
+                      <img src={quiz.image} alt="" />
+                    </div>
+                  ) : (
+                    <p key={nanoid()} className="contentTask">
+                      {quiz.text}
+                    </p>
+                  )}
+
                   <div className="answerBlock">
                     <input
                       id={quiz.answ1 + quiz.number}

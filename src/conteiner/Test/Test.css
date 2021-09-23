@@ -64,12 +64,19 @@
     max-width: 800px;
 }
 
+@media screen and (max-width: 1920px) {
+    .startTest .startTestContent {
+        max-width: 1200px;
+    }
+}
+
 .startTest .startTestContent .startTestItem {
     margin-bottom: 20px;
 }
 
 .startTest .startTestContent .startTestItem img {
     width: 100%;
+    padding: 10px;
 }
 
 .startTest .startTestContent .startTestItem .task {
@@ -135,4 +142,16 @@
 
 #answer > p {
     color: #000;
+}
+
+.exercise {
+    display: grid;
+    grid-template-columns: 50% 2fr;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.exercise > p {
+    margin: 20px;
 }

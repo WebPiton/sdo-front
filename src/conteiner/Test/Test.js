@@ -72,6 +72,22 @@ class Test extends Component {
   }
 
   render() {
+    const end = (e) => {
+      let ans = document.querySelectorAll("input");
+      let arr = [];
+      let i = 0
+      for ( i of ans ) {
+        if (i.checked) {
+          arr.push({
+            number: i.name,
+            variant: i.getAttribute("variant"),
+            answers: i.value,
+          })
+        }
+      }
+      return arr
+    }
+
     const studentpage = () => {
       var qwe = "modul";
       this.props.studentPage(qwe);
@@ -79,23 +95,7 @@ class Test extends Component {
 
     const Completionist = () => {
       this.interpretedAlert();
-      let ans = document.querySelectorAll("input");
-      let arr = [];
-      for (var i = 0, length = ans.length; i < length; i++) {
-        if (ans[i].checked) {
-          arr.push({
-            number: ans[i].name,
-            variant: ans[i].getAttribute("variant"),
-            answers: ans[i].value,
-          });
-        } else {
-          arr.push({
-            number: ans[i].name,
-            variant: ans[i].getAttribute("variant"),
-            answers: null,
-          });
-        }
-      }
+      let arr = end()
 
       axios({
         url:
@@ -118,7 +118,7 @@ class Test extends Component {
           arr,
         },
       })
-        .then((result) => {
+        .then(() => {
           studentpage();
           this.props.history.push("/modul", {
             idSchool: sessionStorage.getItem("idSchool"),
@@ -134,24 +134,7 @@ class Test extends Component {
 
     const vhode = (e) => {
       e.preventDefault();
-      let ans = document.querySelectorAll("input");
-      let arr = [];
-      for (var i = 0, length = ans.length; i < length; i++) {
-        if (ans[i].checked) {
-          arr.push({
-            number: ans[i].name,
-            variant: ans[i].getAttribute("variant"),
-            answers: ans[i].value,
-          });
-        } else {
-          arr.push({
-            number: ans[i].name,
-            variant: ans[i].getAttribute("variant"),
-            answers: null,
-          });
-        }
-      }
-
+      const arr = end()
       axios({
         url:
           "/" +
@@ -174,6 +157,7 @@ class Test extends Component {
         },
       })
         .then((result) => {
+          console.log(result);
           if (result.data.success === true) {
             this.interpretedAlert("Результат сохранён");
             studentpage();

@@ -1,79 +1,65 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <link rel="stylesheet" href="main.css" />
-    <meta name="description" content="Система тестирования" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
-    <title>Система тестирования</title>
-  </head>
-  <!-- Yandex.Metrika counter -->
-  <script type="text/javascript">
-    (function (m, e, t, r, i, k, a) {
-      m[i] =
-        m[i] ||
-        function () {
-          (m[i].a = m[i].a || []).push(arguments);
-        };
-      m[i].l = 1 * new Date();
-      (k = e.createElement(t)),
-        (a = e.getElementsByTagName(t)[0]),
-        (k.async = 1),
-        (k.src = r),
-        a.parentNode.insertBefore(k, a);
-    })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-    ym(85358086, "init", {
-      clickmap: true,
-      trackLinks: true,
-      accurateTrackBounce: true,
-    });
-  </script>
-  <noscript
-    ><div>
-      <img
-        src="https://mc.yandex.ru/watch/85358086"
-        style="position: absolute; left: -9999px"
-        alt=""
-      /></div
-  ></noscript>
-  <!-- /Yandex.Metrika counter -->
-  <body
-    oncopy="wpccAlert('wpcc-fail','Copying is disabled.'); return false;"
-    oncut="wpccAlert('wpcc-fail','Copying is disabled.'); return false;"
-    ondragstart="return false;"
-    ondrop="return false;"
-    oncontextmenu="return false;"
-  >
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <script>
-      document.ondragstart = test;
-      //запрет на перетаскивание
-      document.onselectstart = test;
-      //запрет на выделение элементов страницы
-      document.oncontextmenu = test;
-      //запрет на выведение контекстного меню
-      function test() {
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="main.css" />
+  <meta name="description" content="Система тестирования" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <title>Система тестирования</title>
+</head>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+  (function (m, e, t, r, i, k, a) {
+    m[i] =
+      m[i] ||
+      function () {
+        (m[i].a = m[i].a || []).push(arguments);
+      };
+    m[i].l = 1 * new Date();
+    (k = e.createElement(t)),
+    (a = e.getElementsByTagName(t)[0]),
+    (k.async = 1),
+    (k.src = r),
+    a.parentNode.insertBefore(k, a);
+  })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+  ym(85358086, "init", {
+    clickmap: true,
+    trackLinks: true,
+    accurateTrackBounce: true,
+  });
+</script>
+<body oncopy="wpccAlert('wpcc-fail','Copying is disabled.'); return false;"
+  oncut="wpccAlert('wpcc-fail','Copying is disabled.'); return false;" ondragstart="return false;"
+  ondrop="return false;" oncontextmenu="return false;">
+  <noscript>Вам необходимо включить JavaScript для запуска этого приложения.</noscript>
+  <div id="root"></div>
+  <script>
+    document.ondragstart = test;
+    document.onselectstart = test;
+    document.oncontextmenu = test;
+
+    function test() {
+      return false;
+    }
+    document.onkeydown = function (event) {
+      if (
+        (event.ctrlKey && event.keyCode == 70) ||
+        (event.ctrlKey && event.keyCode == 85) ||
+        (event.ctrlKey && event.shiftKey && event.keyCode == 73) ||
+        (event.ctrlKey && event.shiftKey && event.keyCode == 74) ||
+        event.keyCode == 123
+      ) {
         return false;
       }
-      document.onkeydown = function (event) {
-        if (
-          (event.ctrlKey && event.keyCode == 85) ||
-          (event.ctrlKey && event.shiftKey && event.keyCode == 73) ||
-          event.keyCode == 123
-        ) {
-          return false;
-        }
-      };
-    </script>
-  </body>
+    };
+  </script>
+</body>
+
 </html>

@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import "./Test.css";
 import Countdown from "react-countdown";
-import Loader from "../../component/Loader/Loader";
+import Loader from "../../../component/Loader/Loader";
 import { nanoid } from "nanoid";
 import { connect } from "react-redux";
-import { studentPage } from "../../store/actions/Auth";
-import axios from "../../axios/axios";
-import Alert from "../../component/Alert/Alert";
+import { studentPage } from "../../../store/actions/Auth";
+import axios from "../../../axios/axios";
+import Alert from "../../../component/Alert/Alert";
 
 class Test extends Component {
   constructor() {
@@ -89,12 +89,11 @@ class Test extends Component {
     }
 
     const studentpage = () => {
-      var qwe = "modul";
+      var qwe = "result";
       this.props.studentPage(qwe);
     };
 
     const Completionist = () => {
-      this.interpretedAlert();
       let arr = end()
 
       axios({
@@ -118,13 +117,10 @@ class Test extends Component {
           arr,
         },
       })
-        .then(() => {
+        .then((res) => {
           studentpage();
-          this.props.history.push("/modul", {
-            idSchool: sessionStorage.getItem("idSchool"),
-            idGroup: sessionStorage.getItem("idGroup"),
-            idStudent: sessionStorage.getItem("idStudent"),
-            token: sessionStorage.getItem("token"),
+          this.props.history.push("/result", {
+            res
           });
         })
         .catch((err) => {
@@ -158,21 +154,16 @@ class Test extends Component {
       })
         .then((result) => {
           console.log(result);
-          if (result.data.success === true) {
-            this.interpretedAlert("Результат сохранён");
-            studentpage();
-            this.props.history.push("/modul", {
-              idSchool: sessionStorage.getItem("idSchool"),
-              idGroup: sessionStorage.getItem("idGroup"),
-              idStudent: sessionStorage.getItem("idStudent"),
-              token: sessionStorage.getItem("token"),
-            });
-          }
+          studentpage();
+          this.props.history.push("/result", {
+            result: result.data.res,
+            nameTest: this.state.header.name
+          });
         })
-        .catch((err) => {
-          alert("Тест не отправлен");
-          console.log(err);
-        });
+        // .catch((err) => {
+        //   alert("Тест не отправлен");
+        //   console.log(err);
+        // });
     };
 
     document.body.style.overflow = "visible";

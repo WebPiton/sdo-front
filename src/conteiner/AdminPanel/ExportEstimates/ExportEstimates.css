@@ -1,0 +1,10 @@
+.ExportEstimates {
+    height: 100%;
+    margin: 25px;
+    margin-left: 97px;
+    padding: 10px;
+    background: #fff;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    min-width: min-content;
+}

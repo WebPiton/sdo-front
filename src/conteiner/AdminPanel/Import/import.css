@@ -1,0 +1,99 @@
+.import {
+    height: 100%;
+    margin: 25px;
+    margin-left: 97px;
+    padding: 10px;
+    background: #fff;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    min-width: min-content;
+}
+
+.import h1 {
+    margin: auto;
+    margin-bottom: 20px;
+    width: max-content;
+}
+
+.file {
+    display: flex;
+}
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputfile + label {
+    color: white;
+    background-color: #29a8df;
+    padding: 7px;
+    border: 0;
+    border-radius: 10px;
+}
+
+.inputfile + label svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    fill: currentColor;
+    margin-top: -0.25em;
+    margin-right: 0.25em;
+}
+
+.inputfile + label {
+	cursor: pointer;
+}
+
+.send {
+    margin-left: 10px;
+    /* height: 100%; */
+    /* width: 100%; */
+    /* margin: 33px 0 0; */
+    background: #29a8df;
+    color: #fff;
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#fileName {
+    /* margin: auto 0; */
+    margin-left: 10px;
+}
+
+.import .table {
+    display: none;
+}
+
+.import .table .newModule {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.import .table .newModule input, select {
+    /* height: 30px; */
+    background: #29a8df;
+    color: #fff;
+    border: 0;
+    border-radius: 10px;
+    padding: 5px 0px 5px 10px;
+}
+
+.import .table .newModule select {
+    height: 30px;
+}
+
+.import .table .newModule input {
+    margin-top: 10px;
+    height: 20px;
+}
+
+.import .table .newModule input::placeholder {
+    color: #fff;
+}

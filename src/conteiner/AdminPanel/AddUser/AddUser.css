@@ -1,0 +1,60 @@
+.AddUser {
+    height: max-content;
+    margin: auto;
+    padding: 20px 50px;
+    background: #fff;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    min-width: min-content;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.AddUser h1 {
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.AddUser form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+}
+
+.AddUser form input {
+    background: #29a8df;
+    color: #fff;
+    border: 0;
+    border-radius: 10px;
+    height: 25px;
+    padding: 5px 5px 3px 7px;
+    margin-bottom: 10px;
+}
+
+.AddUser form select {
+    margin-bottom: 10px;
+    cursor: pointer;
+    height: 33px;
+}
+
+.AddUser form select, input {
+    font-size: 20px;
+}
+
+.AddUser form input::placeholder {
+    color: #fff;
+}
+
+.AddUser form button {
+    height: 30px;
+    background: #04BF10;
+    color: #fff;
+    border: 0;
+    border-radius: 5px;
+    font-size: 20px;
+    width: 50%;
+    margin: auto;
+    cursor: pointer;
+}

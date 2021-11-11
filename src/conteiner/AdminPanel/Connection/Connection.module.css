@@ -1,0 +1,151 @@
+.Connection {
+    /* position: relative;
+    left: 72px; */
+    height: 100%;
+    margin: 25px;
+    margin-left: 97px;
+    padding: 10px;
+    background: #fff;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    min-width: min-content;
+}
+
+.Connection .home {
+    text-align: center;
+}
+
+/* .Connection .conteiner {
+    display: flex;
+} */
+
+.Connection .control {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* margin: auto; */
+    /* width: 50%; */
+    align-items: center;
+}
+
+.Connection .control .controlButton {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+}
+
+.Connection .control button {
+    height: 30px;
+    width: 50%;
+    margin: auto;
+    margin-bottom: 10px;
+    background: #05AFF2;
+    color: #fff;
+    border: 0;
+    border-radius: 5px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.Connection .control .controlSelect {
+    width: 50%;
+    margin: auto;
+}
+
+.Connection .control p {
+    margin: auto;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Connection .control p select {
+    margin-left: 10px;
+    height: 30px;
+    width: 50%;
+    background: #05AFF2;
+    color: #fff;
+    border: 0;
+    border-radius: 5px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.Connection .control .school, .Connection .control .classes {
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.Connection .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 2fr));
+}
+
+.Connection .container .item {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: auto;
+    margin-bottom: 15px;
+    height: 110px;
+}
+
+.Connection .container .item p {
+    margin-left: 15px;
+    width: 100%;
+    font-size: 20px;
+    margin: 5px;
+}
+
+.Connection .container .item .confirmed {
+    border: 0;
+    border-radius: 10px;
+    color: #fff;
+    padding: 5px;
+    background: #0dcc07;
+    font-size: 15px;
+    height: 40px;
+    margin: auto 0;
+}
+
+.noCon {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}

@@ -1,0 +1,168 @@
+.Events {
+    height: 100%;
+    margin: 25px;
+    margin-left: 97px;
+    padding: 10px;
+    background: #fff;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    min-width: min-content;
+}
+
+.Events h1 {
+    margin: auto;
+    margin-bottom: 20px;
+    width: max-content;
+}
+
+.Events .block {
+    display: flex;
+}
+
+.Events .block .leftBlock {
+    width: 65%;
+    margin-right: 10px;
+}
+
+.Events .block .leftBlock .selectionBy {
+    display: flex;
+}
+
+.Events .block .leftBlock p {
+    margin: 0;
+    width: max-content;
+    font-size: 20px;
+}
+
+.Events .block .leftBlock .selectEvent {
+    display: grid;
+}
+
+.Events .block .leftBlock .selectEvent select {
+    height: 30px;
+    margin: 10px 0 0;
+    background: #29a8df;
+    color: #fff;
+    border: 0;
+    border-radius: 10px;
+}
+
+.Events .block .leftBlock .selectEvent select:last-child {
+    margin-bottom: 10px;
+}
+
+.Events .block .leftBlock .sortBy {
+    height: 30px;
+    width: 100%;
+    margin: 10px 0 0;
+    background: #29a8df;
+    color: #fff;
+    border: 0;
+    border-radius: 10px;
+}
+
+.Events .rightBlock {
+    width: 35%;
+}
+
+.Events .rightBlock p {
+    margin: 0;
+    width: max-content;
+    font-size: 20px;
+}
+
+.Events .buttonShow {
+    height: 30px;
+    width: 100%;
+    margin: 33px 0 0;
+    background: #29a8df;
+    color: #fff;
+    border: 0;
+    border-radius: 10px;
+}
+
+.Events .rightBlock .selectEl {
+    display: none;
+}
+
+.Events .rightBlock .selectEl select {
+    height: 30px;
+    width: 100%;
+    margin: 8px 0 0;
+    background: #29a8df;
+    color: #fff;
+    border: 0;
+    border-radius: 10px;
+}
+
+.Events .search {
+    height: 30px;
+    margin: 10px 0;
+    background: #04BF10;
+    color: #fff;
+    border: 0;
+    border-radius: 10px;
+}
+
+.Events .tableResults {
+    display: none;
+}
+
+.Events table {
+    width: 100%;
+}
+
+.Events table tr th {
+    /* width: min-content; */
+    padding: 1px;
+    border: 1px solid black;
+    /* width:30px; */
+    height:20px;
+    position: relative;
+}
+
+.Events table tr td {
+    padding: 1px;
+    border: 1px solid black;
+    margin: 0 auto;
+    height: 32px;
+}
+
+.Events .resultTd {
+    padding: 0;
+}
+
+.Events .resultSpan {
+    /* background: #fff; */
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.Events table tr td p {
+    width: max-content;
+    margin: 0 auto;
+}
+
+.Events .buttonTable {
+    display: flex;
+}
+
+.Events .buttonTable a {
+    background: #29a8df;
+    color: #fff;
+    text-align: center;
+    border-right: 1px solid black;
+    padding: 7px;
+    width: 100%;
+    height: min-content;
+}
+
+.Events .tableHeadClickable{
+    width: 20px;
+}
+
+.Events .tableHeadClickable p {
+    margin: 0 auto;
+    width: max-content;
+}

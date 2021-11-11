@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import "./Сhoice.css";
 import { connect } from "react-redux";
-import { studentPage } from "../../store/actions/Auth";
-import axios from "../../axios/axios";
+import { studentPage } from "../../../store/actions/Auth";
+import axios from "../../../axios/axios";
 import { nanoid } from "nanoid";
-import Out from "../../component/Out/Out";
+import Out from "../../../component/Out/Out";
 
 class Сhoice extends Component {
   state = {

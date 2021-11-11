@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import "./School.css";
 import { connect } from "react-redux";
-import { studentPage } from "../../store/actions/Auth";
+import { studentPage } from "../../../store/actions/Auth";
 import { Link } from "react-router-dom";
 import { nanoid } from "nanoid";
-import Out from "../../component/Out/Out";
-import axios from "../../axios/axios";
+import Out from "../../../component/Out/Out";
+import axios from "../../../axios/axios";
 
 class School extends Component {
   state = {
@@ -49,7 +49,6 @@ class School extends Component {
     };
     return (
       <React.Fragment>
-        <p>Школа</p>
         <div className="navlink">
           {this.state.school.map((item) => {
             return (

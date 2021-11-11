@@ -1,13 +1,10 @@
 .Menu {
     position: fixed;
-    background: #363636;
+    background: #29a8df;
     width: 70px;
     height: 100%;
+    border-right: 3px solid #fff;
 }
-
-/* .Menu:hover {
-    width: 300px;
-} */
 
 .Menu nav {
     display: flex;
@@ -39,7 +36,7 @@
     background: #fff;
     text-align: center;
     color: #fff;
-    background: #363636;
+    background: #29a8df;
 
 }
 

@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import "./Modul.css";
 import { connect } from "react-redux";
-import { studentPage } from "../../store/actions/Auth";
+import { studentPage } from "../../../store/actions/Auth";
 import { nanoid } from "nanoid";
-import Loader from "../../component/Loader/Loader";
+import Loader from "../../../component/Loader/Loader";
 import { Link } from "react-router-dom";
-import Out from "../../component/Out/Out";
-import axios from "../../axios/axios";
+import Out from "../../../component/Out/Out";
+import axios from "../../../axios/axios";
 
 class Modul extends Component {
   state = {
@@ -66,9 +66,9 @@ class Modul extends Component {
                 return (
                   <div
                     className={
-                      item.isCompleted === true
-                        ? "testSelectionItemClose"
-                        : "testSelectionItem"
+                      // item.isCompleted === true
+                      //   ? "testSelectionItemClose" :
+                        "testSelectionItem"
                     }
                     key={nanoid()}
                   >
@@ -98,16 +98,6 @@ class Modul extends Component {
                           {item.name}
                         </span>
                       </p>
-                      {item.isCompleted === true ? (
-                        <p
-                          className={
-                            item.isCompleted === true ? "linkclose" : null
-                          }
-                          key={nanoid()}
-                        >
-                          Тест уже пройден
-                        </p>
-                      ) : (
                         <p key={nanoid()}>
                           Время на выполнение:{" "}
                           <span className="spanInfo" key={nanoid()}>
@@ -116,7 +106,7 @@ class Modul extends Component {
                             </span>
                           </span>
                         </p>
-                      )}
+                        <p>Количество попытов пройденно <span className="spanInfo">{item.completedCount > 0 ? item.completedCount : 0}</span></p>
                     </Link>
                   </div>
                 );

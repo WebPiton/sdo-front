@@ -1,0 +1,61 @@
+.Module {
+    height: 100%;
+    width: 70%;
+    margin: auto;
+    margin-top: 25px;
+    border-bottom: 25px;
+    /* margin-left: 97px; */
+    padding: 10px;
+    background: #fff;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    min-width: min-content;
+}
+
+.Module .home {
+    text-align: center;
+}
+
+.Module .selectMod {
+    display: grid;
+}
+
+.Module .selectMod .class-select, .thing-select, .module-select {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.Module .selectMod .class-select p, .thing-select p, .module-select p {
+    margin: auto 0;
+    height: max-content;
+}
+
+.Module .selectMod .class-select select, .thing-select select, .module-select select {
+    height: 35px;
+    width: 400px;
+    margin-left: auto;
+    background: #05AFF2;
+    color: #fff;
+    border: 0;
+    border-radius: 10px;
+}
+
+/* .Module .item {
+    width: 70%;
+    margin: auto;
+} */
+
+.Module .answers p {
+    margin-top: 5px;
+}
+
+.Module .changeQuestion {
+    height: 30px;
+    margin-right: 10px;
+    background: #05AFF2;
+    color: #fff;
+    border: 0;
+    border-radius: 5px;
+    font-size: 20px;
+    float: right;
+}

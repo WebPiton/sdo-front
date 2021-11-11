@@ -1,0 +1,100 @@
+.result {
+    background: #fff;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    margin: 20px;
+    padding: 15px;
+    font-size: 20px;
+}
+
+.result .resTestInfo {
+    width: 70%;
+    margin: 10px auto;
+}
+
+.result .resTestInfo p span {
+    font-weight: 600;
+}
+
+.result .resTest .resAsnwerInfo .resQuestion {
+    display: grid;
+    grid-template-columns: 50% 2fr;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.result .resTest .resAsnwerInfo .exercise {
+    width: max-content;
+    margin: auto;
+    border: 3px solid #000;
+    border-image: linear-gradient(to right, #0852ff, #b866b0);
+    border-image-slice: 1;
+    width: 80%;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 25px;
+}
+
+.result .resTest .resAnswer {
+    width: 50%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.result .resTest .resAnswer .resAnswerCor, .result .resTest .resAnswer .resAnswerCor span {
+    color: rgb(0, 196, 0);
+    font-weight: 700;
+}
+
+.result .resTest .resAnswer .resAnswerWorng {
+    color: red;
+    font-weight: 700;
+}
+
+textarea {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    resize: none;
+    font-size: 20px;
+    padding: 10px;
+    width: 50%;
+    height: 200px;
+    display: none;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.buttons button {
+    background: #29a8df;
+    color: #fff;
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 5px;
+    cursor: pointer;
+    margin: 10px auto;
+}
+
+.buttons textarea {
+    margin: auto;
+}
+
+.endTests {
+    display: none;
+}
+
+.endTest {
+    background: #29a8df;
+    color: #fff;
+    border: 2px solid #000;
+    border-radius: 10px;
+    /* font-size: 22px; */
+    padding: 5px;
+    margin: 10px;
+    /* font-weight: 600; */
+    cursor: pointer;
+    margin: auto;
+}

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import "./Zone.css"
 import { connect } from "react-redux"
-import { studentPage } from '../../store/actions/Auth'
+import { studentPage } from '../../../store/actions/Auth'
 import { Link } from "react-router-dom";
 import { nanoid } from "nanoid";
-import axios from "../../axios/axios";
+import axios from "../../../axios/axios";
 
 class Zone extends Component {
   state = {
@@ -33,7 +33,6 @@ class Zone extends Component {
     }
     return (
       <div>
-        <p>Зона</p>
         <div className='navlink'>
           {this.state.zone.map((i) => {
             return (
